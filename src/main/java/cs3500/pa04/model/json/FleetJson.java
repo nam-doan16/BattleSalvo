@@ -1,4 +1,4 @@
-package cs3500.pa04.model.types;
+package cs3500.pa04.model.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa04.model.json.ShipJson;
