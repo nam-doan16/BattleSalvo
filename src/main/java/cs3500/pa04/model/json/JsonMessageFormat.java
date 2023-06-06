@@ -1,5 +1,6 @@
 package cs3500.pa04.model.json;
 
+
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
