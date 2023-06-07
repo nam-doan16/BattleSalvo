@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * <p>
  *   <code>
  *     {
- *       "method-name": "method name"
+ *       "method-name": "end-game"
  *       "arguments": {}
  *     }
  *   </code>
