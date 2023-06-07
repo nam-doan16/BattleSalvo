@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa04.model.types.Direction;
 
 /**
+ * Represents a Json representation of a ship
+ *
  * JSON format of this record:
  *
  * <p>

@@ -6,6 +6,7 @@ import cs3500.pa04.controller.player.ComputerPlayerController;
 import cs3500.pa04.controller.player.ManualPlayerController;
 import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.types.Coord;
+import cs3500.pa04.model.types.GameMode;
 import cs3500.pa04.view.View;
 import java.util.List;
 import java.util.Random;
@@ -35,14 +36,18 @@ public class BattleSalvoController {
    * Runs the BattleSalvo game and controls its states
    */
   public void run() {
+
     view.printMessage("Welcome to BattleSalvo!");
     int[] dimensions = this.getDimensions();
     int height = dimensions[0];
     int width = dimensions[1];
-    AbstPlayerController player =
-        new ManualPlayerController(this.reader, this.view, height, width, rand);
-    AbstPlayerController opponent =
-        new ComputerPlayerController(this.reader, height, width, this.view, rand);
+    AbstPlayerController player = null;
+    AbstPlayerController opponent = null;
+      player =
+          new ManualPlayerController(this.reader, this.view, height, width, rand);
+      opponent =
+          new ComputerPlayerController(this.reader, height, width, this.view, rand);
+
     List<Ship> playerShips = player.setup();
     List<Ship> opponentShips = opponent.setup();
     opponent.printBoard();

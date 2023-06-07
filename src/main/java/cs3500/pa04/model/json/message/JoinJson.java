@@ -6,6 +6,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 /**
  * Represents a Json representation of the join method
  *
+ * JSON format of this record:
+ *
+ * <p>
+ *   <code>
+ *     {
+ *       "method-name": "method name"
+ *       "arguments": {}
+ *     }
+ *   </code>
+ * </p>
+ *
  * @param methodName method name
  * @param arguments arguments of the method
  */

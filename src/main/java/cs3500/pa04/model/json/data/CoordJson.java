@@ -3,6 +3,8 @@ package cs3500.pa04.model.json.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * Represents a Json representation of a Coord
+ *
  * JSON format of this record:
  *
  * <p>
