@@ -1,4 +1,4 @@
-package cs3500.pa04.model.json;
+package cs3500.pa04.model.json.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa04.model.types.Direction;
