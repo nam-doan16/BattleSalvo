@@ -2,8 +2,8 @@ package cs3500.pa04;
 
 import cs3500.pa04.controller.ProxyController;
 import cs3500.pa04.controller.input.Reader;
+import cs3500.pa04.controller.player.AbstPlayerController;
 import cs3500.pa04.controller.player.ComputerPlayerController;
-import cs3500.pa04.controller.player.ManualPlayerController;
 import cs3500.pa04.view.View;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +20,9 @@ public class TestDriver {
 
     // uncomment line 26 to use RandomPlayerController instead of ManualPlayerController
     // ProxyReferee proxyReferee = new ProxyReferee(server, new RandomPlayerController());
-    ProxyController proxyController = new ProxyController(server, new ManualPlayerController(new Reader(new InputStreamReader(System.in)), new View(System.out), 10, 10, new Random()));
+    // AbstPlayerController player = new ManualPlayerController(new Reader(new InputStreamReader(System.in)), new View(System.out), 10, 10, new Random());
+    AbstPlayerController player = new ComputerPlayerController(new Reader(new InputStreamReader(System.in)), 6, 6, new View(System.out), new Random());
+    ProxyController proxyController = new ProxyController(server, player);
     proxyController.run();
   }
 }

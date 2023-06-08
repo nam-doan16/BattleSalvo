@@ -15,6 +15,6 @@ public class ComputerPlayer extends AbstPlayer {
    * @param rand Random object
    */
   public ComputerPlayer(int height, int width, Random rand) {
-    super("Computer Player", height, width, rand);
+    super("nam-doan16", height, width, rand);
   }
 }

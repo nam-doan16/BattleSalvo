@@ -1,6 +1,9 @@
 package cs3500.pa04.model.pieces;
 
+import cs3500.pa04.model.json.data.CoordJson;
+import cs3500.pa04.model.json.data.ShipJson;
 import cs3500.pa04.model.types.Coord;
+import cs3500.pa04.model.types.Direction;
 import cs3500.pa04.model.types.ShipType;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,19 @@ public class Ship {
     this.shipType = shipType;
     this.shipLocation = shipLocation;
     this.floatStatus = 0;
+  }
+  public ShipJson getShipJson() {
+    // checking for horizontal or vertical
+    Direction axis;
+    if (shipLocation.get(0).getX() == shipLocation.get(shipLocation.size() - 1).getX()) {
+      axis = Direction.VERTICAL;
+    } else {
+      axis = Direction.HORIZONTAL;
+    }
+
+    Coord startCoordinate = this.shipLocation.get(0);
+    CoordJson startingCoordJson = new CoordJson(startCoordinate.getX(), startCoordinate.getY());
+    return new ShipJson(startingCoordJson, shipType.size, axis);
   }
 
   /**
@@ -57,14 +73,16 @@ public class Ship {
    * @return successfully hit coordinates
    */
   public ArrayList<Coord> reportShipDamage(List<Coord> opponentHits) {
+    ArrayList<Coord> currentHits = new ArrayList<>();
     for (Coord coord : this.shipLocation) {
       for (Coord opponentCoord : opponentHits) {
         if (opponentCoord.equals(coord)) {
           this.hitShips.add(coord);
+          currentHits.add(coord);
           this.floatStatus++;
         }
       }
     }
-    return this.hitShips;
+    return currentHits;
   }
 }

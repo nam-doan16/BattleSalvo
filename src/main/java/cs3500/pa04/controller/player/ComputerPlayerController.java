@@ -1,6 +1,7 @@
 package cs3500.pa04.controller.player;
 
 import cs3500.pa04.controller.input.ReaderInterface;
+import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.players.ComputerPlayer;
 import cs3500.pa04.model.types.Coord;
 import cs3500.pa04.model.types.ShipType;
@@ -16,6 +17,7 @@ import java.util.Random;
 public class ComputerPlayerController extends AbstPlayerController {
   private ArrayList<Coord> boardChoices;
   private final Random rand;
+  private int totalCoordinates;
 
   /**
    * Constructor for ComputerPlayerController
@@ -31,6 +33,12 @@ public class ComputerPlayerController extends AbstPlayerController {
     super(new ComputerPlayer(height, width, rand), view, input, height, width);
     this.rand = rand;
     this.addBoardChoices(height, width);
+  }
+
+  public List<Ship> setup(int height, int width, HashMap<ShipType, Integer> specs) {
+    this.addBoardChoices(height, width);
+    this.totalCoordinates = height * width;
+    return this.player.setup(height, width, specs);
   }
 
   /**
@@ -56,13 +64,16 @@ public class ComputerPlayerController extends AbstPlayerController {
    */
   @Override
   public List<Coord> getShots(int maxShots) {
+    maxShots = Math.min(maxShots, totalCoordinates);
     ArrayList<Coord> shots = new ArrayList<>();
     for (int i = 0; i < maxShots; i++) {
       shots.add(this.boardChoices.remove(rand.nextInt(this.boardChoices.size())));
+      totalCoordinates--;
     }
     player.setShots(shots);
     return player.takeShots();
   }
+
 
   /**
    * Gets the name of this computer player
@@ -71,7 +82,7 @@ public class ComputerPlayerController extends AbstPlayerController {
    */
   @Override
   public String getName() {
-    return "Computer Player";
+    return this.player.name();
   }
 
   /**
