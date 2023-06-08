@@ -1,12 +1,12 @@
 package cs3500.pa04.controller;
 
 import cs3500.pa04.Validator;
+import cs3500.pa04.controller.input.ReaderInterface;
 import cs3500.pa04.controller.player.AbstPlayerController;
 import cs3500.pa04.controller.player.ComputerPlayerController;
 import cs3500.pa04.controller.player.ManualPlayerController;
 import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.types.Coord;
-import cs3500.pa04.model.types.GameMode;
 import cs3500.pa04.view.View;
 import java.util.List;
 import java.util.Random;

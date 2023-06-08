@@ -23,5 +23,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 public record JoinJson(
     @JsonProperty("method-name") String methodName,
     @JsonProperty("arguments") JsonNode arguments
-) implements JsonMessageFormat {
+) {
+  public JoinJson() {
+    this("join", null);
+  }
 }

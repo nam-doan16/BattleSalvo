@@ -1,7 +1,7 @@
 package cs3500.pa04.controller.player;
 
 import cs3500.pa04.Validator;
-import cs3500.pa04.controller.ReaderInterface;
+import cs3500.pa04.controller.input.ReaderInterface;
 import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.players.AbstPlayer;
 import cs3500.pa04.model.types.Coord;

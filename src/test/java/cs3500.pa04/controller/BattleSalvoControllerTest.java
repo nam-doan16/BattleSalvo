@@ -3,7 +3,8 @@ package cs3500.pa04.controller;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import cs3500.pa04.controller.mock.MockReader;
+import cs3500.pa04.controller.input.ReaderInterface;
+import cs3500.pa04.controller.input.mock.MockReader;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

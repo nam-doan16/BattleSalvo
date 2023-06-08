@@ -4,7 +4,7 @@ package cs3500.pa04.controller.player;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import cs3500.pa04.controller.mock.MockReader;
+import cs3500.pa04.controller.input.mock.MockReader;
 import cs3500.pa04.model.types.Coord;
 import cs3500.pa04.model.types.ShipType;
 import cs3500.pa04.view.View;

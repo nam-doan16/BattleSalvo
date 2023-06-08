@@ -1,6 +1,6 @@
-package cs3500.pa04.controller.mock;
+package cs3500.pa04.controller.input.mock;
 
-import cs3500.pa04.controller.ReaderInterface;
+import cs3500.pa04.controller.input.ReaderInterface;
 import java.io.StringReader;
 import java.util.Scanner;
 

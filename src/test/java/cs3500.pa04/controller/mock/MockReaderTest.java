@@ -3,7 +3,8 @@ package cs3500.pa04.controller.mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cs3500.pa04.controller.ReaderInterface;
+import cs3500.pa04.controller.input.ReaderInterface;
+import cs3500.pa04.controller.input.mock.MockReader;
 import org.junit.jupiter.api.Test;
 
 /**

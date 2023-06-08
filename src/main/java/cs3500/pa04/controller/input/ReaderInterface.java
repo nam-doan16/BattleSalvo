@@ -1,4 +1,4 @@
-package cs3500.pa04.controller;
+package cs3500.pa04.controller.input;
 
 /**
  * Represents an interface for a Reader class

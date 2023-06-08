@@ -23,5 +23,5 @@ import com.fasterxml.jackson.databind.JsonNode;
 public record ReportDamageJson(
     @JsonProperty("method-name") String methodName,
     @JsonProperty("arguments") JsonNode arguments
-) implements JsonMessageFormat {
+) {
 }
