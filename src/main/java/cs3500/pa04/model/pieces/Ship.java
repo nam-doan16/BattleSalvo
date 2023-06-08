@@ -29,6 +29,12 @@ public class Ship {
     this.shipLocation = shipLocation;
     this.floatStatus = 0;
   }
+
+  /**
+   * Returns a ShipJson instance based on this Ship's location on a board
+   *
+   * @return a ShipJson representing this ship
+   */
   public ShipJson getShipJson() {
     // checking for horizontal or vertical
     Direction axis;

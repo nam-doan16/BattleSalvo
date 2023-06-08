@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Represents a Json representation of the takeShots method
- *
  * JSON format of this record:
- *
  * <p>
  *   <code>
  *     {

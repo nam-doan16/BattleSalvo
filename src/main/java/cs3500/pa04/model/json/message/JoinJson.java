@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Represents a Json representation of the join method
- *
  * JSON format of this record:
- *
  * <p>
  *   <code>
  *     {
@@ -24,7 +22,4 @@ public record JoinJson(
     @JsonProperty("method-name") String methodName,
     @JsonProperty("arguments") JsonNode arguments
 ) {
-  public JoinJson() {
-    this("join", null);
-  }
 }
