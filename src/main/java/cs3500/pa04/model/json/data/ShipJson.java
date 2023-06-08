@@ -5,7 +5,6 @@ import cs3500.pa04.model.types.Direction;
 
 /**
  * Represents a Json representation of a ship
- *
  * JSON format of this record:
  *
  * <p>
@@ -23,7 +22,7 @@ import cs3500.pa04.model.types.Direction;
  * @param direction a Direction to determine the orientation of this ship
  */
 public record ShipJson(
-    @JsonProperty("Coord") CoordJson shipCoord,
+    @JsonProperty("coord") CoordJson shipCoord,
     @JsonProperty("length") int length,
     @JsonProperty("direction") Direction direction) {
 }

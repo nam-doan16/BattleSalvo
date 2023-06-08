@@ -19,7 +19,7 @@ import java.util.Random;
 public abstract class AbstPlayer implements Player {
   private String name;
   private Board board;
-  private final Board opponentBoard;
+  private Board opponentBoard;
   private ArrayList<Coord> shots;
   private final Random rand;
 
@@ -69,6 +69,7 @@ public abstract class AbstPlayer implements Player {
    */
   @Override
   public List<Ship> setup(int height, int width, Map<ShipType, Integer> specifications) {
+    this.opponentBoard = new Board(height, width, new ArrayList<>());
     // setting up initial storage to check for available locations for each ship
     ArrayList<Ship> ships = new ArrayList<>();
     boolean[][] availableLocations = new boolean[height][width];
@@ -254,5 +255,9 @@ public abstract class AbstPlayer implements Player {
   public String stringBoard() {
     return this.opponentBoard + "\n\n"
         + this.name() + "'s board:\n" + this.board;
+  }
+
+  public boolean containsShot(int x, int y) {
+    return opponentBoard.containsShot(x, y);
   }
 }

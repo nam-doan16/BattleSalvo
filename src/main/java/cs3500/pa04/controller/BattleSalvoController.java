@@ -36,26 +36,21 @@ public class BattleSalvoController {
    * Runs the BattleSalvo game and controls its states
    */
   public void run() {
-
     view.printMessage("Welcome to BattleSalvo!");
     int[] dimensions = this.getDimensions();
     int height = dimensions[0];
     int width = dimensions[1];
-    AbstPlayerController player = null;
-    AbstPlayerController opponent = null;
-      player =
-          new ManualPlayerController(this.reader, this.view, height, width, rand);
-      opponent =
+    AbstPlayerController player =
+        new ManualPlayerController(this.reader, this.view, height, width, rand);
+    AbstPlayerController opponent =
           new ComputerPlayerController(this.reader, height, width, this.view, rand);
-
     List<Ship> playerShips = player.setup();
     List<Ship> opponentShips = opponent.setup();
-    opponent.printBoard();
     do {
       view.printMessage(opponent.getName() + "'s Board Data:");
       player.printBoard();
-      List<Coord> playerShots = player.getShots(opponentShips.size());
-      List<Coord> opponentShots = opponent.getShots(playerShips.size());
+      List<Coord> playerShots = player.getShots(playerShips.size());
+      List<Coord> opponentShots = opponent.getShots(opponentShips.size());
       player.successfulHits(opponent.reportDamage(playerShots));
       opponent.successfulHits(player.reportDamage(opponentShots));
     } while (playerShips.size() != 0 && opponentShips.size() != 0);

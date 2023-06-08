@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Represents a Json representation of a volley (consists of an array of coord)
- *
  * JSON format of this record:
  *
  * <p>
@@ -18,5 +17,5 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param volley the volley of shots represented by an array of coords
  */
 public record VolleyJson(
-    @JsonProperty("volley") CoordJson[] volley) {
+    @JsonProperty("coordinates") CoordJson[] volley) {
 }

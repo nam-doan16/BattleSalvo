@@ -5,6 +5,7 @@ import cs3500.pa04.controller.input.ReaderInterface;
 import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.players.AbstPlayer;
 import cs3500.pa04.model.types.Coord;
+import cs3500.pa04.model.types.GameResult;
 import cs3500.pa04.model.types.ShipType;
 import cs3500.pa04.view.View;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public abstract class AbstPlayerController {
   private final int width;
   private final ReaderInterface reader;
 
+  private int totalCoordinates;
+
   /**
    * Constructor for AbstPlayerController
 
@@ -41,6 +44,7 @@ public abstract class AbstPlayerController {
     this.player.setName(this.getName());
     this.height = height;
     this.width = width;
+    this.totalCoordinates = height * width;
   }
 
   /**
@@ -50,6 +54,16 @@ public abstract class AbstPlayerController {
    */
   public List<Ship> setup() {
     return this.player.setup(height, width, this.getFleetSize(Math.min(height, width)));
+  }
+
+  /**
+   * Delegates to this player's setup method with the given parameters
+   * to return the list of setup ships
+   *
+   * @return List of setup ships
+   */
+  public List<Ship> setup(int height, int width, HashMap<ShipType, Integer> specs) {
+    return this.player.setup(height, width, specs);
   }
 
   /**
@@ -79,6 +93,7 @@ public abstract class AbstPlayerController {
    * @return all shots inputted
    */
   public List<Coord> getShots(int maxShots) {
+    maxShots = Math.min(maxShots, totalCoordinates);
     ArrayList<Coord> shots = new ArrayList<>();
     do {
       view.printMessage("Please enter " + maxShots + " Shots in the format of \"X Y\":");
@@ -93,7 +108,12 @@ public abstract class AbstPlayerController {
           break;
         }
         if (Validator.isInBound(shotCoord, height, width, 0)) {
-          shots.add(new Coord(shotCoord[0], shotCoord[1]));
+          if (!this.player.containsShot(shotCoord[0], shotCoord[1])) {
+            shots.add(new Coord(shotCoord[0], shotCoord[1]));
+            totalCoordinates--;
+          } else {
+            view.printMessage("Shot already made!");
+          }
         } else {
           view.printMessage("Invalid numerical bounds! Enter your Salvo again.");
         }
@@ -160,5 +180,9 @@ public abstract class AbstPlayerController {
    */
   public void printBoard() {
     view.printMessage(this.player.stringBoard());
+  }
+
+  public void endGame(GameResult result, String reason) {
+    this.player.endGame(result, reason);
   }
 }

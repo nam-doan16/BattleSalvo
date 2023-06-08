@@ -108,4 +108,8 @@ public class Board {
     return temp.toString();
   }
 
+  public boolean containsShot(int x, int y) {
+    return board[y][x] != '0';
+  }
+
 }
