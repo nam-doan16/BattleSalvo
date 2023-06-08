@@ -16,7 +16,7 @@ class ComputerPlayerTest {
   @Test
   public void testConstructor() {
     AbstPlayer player = new ComputerPlayer(6, 6, new Random(6));
-    assertEquals(player.name(), "Computer Player");
+    assertEquals(player.name(), "nam-doan16");
   }
 
 }

@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Represents a Json representation of a Coord
- *
  * JSON format of this record:
- *
  * <p>
  *   <code>
  *     {

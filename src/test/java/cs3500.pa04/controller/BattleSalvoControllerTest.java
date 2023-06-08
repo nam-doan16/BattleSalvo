@@ -48,11 +48,17 @@ class BattleSalvoControllerTest {
    */
   @Test
   void testLostRun() {
-    String shots = "0 0\n";
+    StringBuilder shots = new StringBuilder();
+    for (int i = 0; i < 6; i++) {
+      for (int j = 0; j < 6; j++) {
+        shots.append(j).append(" ").append(i).append("\n");
+      }
+    }
 
     Appendable output = new StringBuilder();
-    ReaderInterface input = new MockReader(initialStart + shots.repeat(120));
-    BattleSalvoController controller = new BattleSalvoController(output, input, new Random(5));
+    String initialStart = "0 0\na a\n6 6\nNam Doan\n2 2 1 1\n";
+    ReaderInterface input = new MockReader(initialStart + shots);
+    BattleSalvoController controller = new BattleSalvoController(output, input, new Random(7));
     controller.run();
     assertTrue(output.toString().contains("You lost!"));
   }
@@ -63,21 +69,18 @@ class BattleSalvoControllerTest {
    */
   @Test
   void testDrawRun() {
-    String shots = "1 0\n2 0\n"
-        + "1 1\n2 1\n"
-        + "0 2\n1 2\n2 2\n3 2\n4 2\n"
-        + "2 3\n3 3\n4 3\n"
-        + "0 4\n1 4\n2 4\n3 4\n"
-        + "2 5\n3 5\n"
-        + "4 5\n4 4\n5 3\n5 2\n3 1\n"
-        + "0 0\n".repeat(5)
-        + "3 0\n";
-
+    StringBuilder shots = new StringBuilder();
+    for (int i = 0; i < 6; i++) {
+      for (int j = 0; j < 6; j++) {
+        shots.append(i).append(" ").append(j).append("\n");
+      }
+    }
 
     Appendable output = new StringBuilder();
     ReaderInterface input = new MockReader("6 6\nNam Doan\n2 2 1 1\n" + shots);
     BattleSalvoController controller = new BattleSalvoController(output, input, new Random(10));
     controller.run();
+    System.out.println(output);
     assertTrue(output.toString().contains("Draw!"));
   }
 

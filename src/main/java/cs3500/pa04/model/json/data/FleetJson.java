@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Represents a Json representation of a player's fleet (consists of an array of ships)
- *
  * JSON format of this record:
- *
  * <p>
  *   <code>
  *     {

@@ -17,6 +17,8 @@ import java.util.Random;
 public class ComputerPlayerController extends AbstPlayerController {
   private ArrayList<Coord> boardChoices;
   private final Random rand;
+  private final int height;
+  private final int width;
   private int totalCoordinates;
 
   /**
@@ -31,10 +33,33 @@ public class ComputerPlayerController extends AbstPlayerController {
   public ComputerPlayerController(ReaderInterface input, int height,
                                   int width, View view, Random rand) {
     super(new ComputerPlayer(height, width, rand), view, input, height, width);
+    this.height = height;
+    this.width = width;
     this.rand = rand;
-    this.addBoardChoices(height, width);
   }
 
+  /**
+   * Uses the superclass for the setup method, but instantiates the choices this computer-player
+   * can make in a game
+   *
+   * @return list of ships created in a board
+   */
+  @Override
+  public List<Ship> setup() {
+    this.addBoardChoices(height, width);
+    this.totalCoordinates = height * width;
+    return super.setup();
+  }
+
+  /**
+   * setup method for newly given arguments
+   *
+   * @param height height of board
+   * @param width width of board
+   * @param specs specifications of ships on board
+   * @return list of ships on the created board
+   */
+  @Override
   public List<Ship> setup(int height, int width, HashMap<ShipType, Integer> specs) {
     this.addBoardChoices(height, width);
     this.totalCoordinates = height * width;

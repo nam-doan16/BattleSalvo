@@ -61,7 +61,7 @@ class ComputerPlayerControllerTest {
   @Test
   void testGetName() {
     // "Computer Player" is the only thing it returns
-    assertEquals(this.computerPlayer.getName(), "Computer Player");
+    assertEquals(this.computerPlayer.getName(), "nam-doan16");
   }
 
   /**

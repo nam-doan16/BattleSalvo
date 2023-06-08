@@ -31,6 +31,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Represents a ProxyController for the game BattleSalvo, typically uses a ComputerPlayer to
+ * be sent to the given server
+ */
 public class ProxyController {
   private final Socket server;
   private final InputStream in;
@@ -112,13 +116,13 @@ public class ProxyController {
    * @param setupArgs SetupArgumentsJson arguments
    */
   private void setupHelp(SetupArgumentsJson setupArgs) {
-    int height = setupArgs.height();
-    int width = setupArgs.width();
     HashMap<ShipType, Integer> spec = new HashMap<>();
     spec.put(ShipType.CARRIER, setupArgs.fleetSpec().carrier());
     spec.put(ShipType.BATTLESHIP, setupArgs.fleetSpec().battleship());
     spec.put(ShipType.DESTROYER, setupArgs.fleetSpec().destroyer());
     spec.put(ShipType.SUBMARINE, setupArgs.fleetSpec().submarine());
+    int height = setupArgs.height();
+    int width = setupArgs.width();
 
     this.currentShips = this.player.setup(height, width, spec);
   }
@@ -136,7 +140,7 @@ public class ProxyController {
     // converting the returned list of ships to a serialized SetupJson
     ShipJson[] shipJsons = new ShipJson[currentShips.size()];
     int index = 0;
-    for (Ship ship: currentShips) {
+    for (Ship ship : currentShips) {
       shipJsons[index] = ship.getShipJson();
       index++;
     }

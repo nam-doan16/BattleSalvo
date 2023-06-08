@@ -53,7 +53,7 @@ public abstract class AbstPlayerController {
    * @return List of setup ships
    */
   public List<Ship> setup() {
-    return this.player.setup(height, width, this.getFleetSize(Math.min(height, width)));
+    return this.setup(height, width, this.getFleetSize(Math.min(height, width)));
   }
 
   /**

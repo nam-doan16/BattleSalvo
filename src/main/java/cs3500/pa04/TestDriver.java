@@ -14,14 +14,15 @@ public class TestDriver {
   public static void main(String[] args) throws IOException {
     runClient("0.0.0.0", 35001);
   }
+
   private static void runClient(String host, int port)
       throws IOException, IllegalStateException {
     Socket server = new Socket(host, port);
 
-    // uncomment line 26 to use RandomPlayerController instead of ManualPlayerController
-    // ProxyReferee proxyReferee = new ProxyReferee(server, new RandomPlayerController());
-    // AbstPlayerController player = new ManualPlayerController(new Reader(new InputStreamReader(System.in)), new View(System.out), 10, 10, new Random());
-    AbstPlayerController player = new ComputerPlayerController(new Reader(new InputStreamReader(System.in)), 6, 6, new View(System.out), new Random());
+
+    AbstPlayerController player
+        = new ComputerPlayerController(new Reader(new InputStreamReader(System.in)),
+        6, 6, new View(System.out), new Random());
     ProxyController proxyController = new ProxyController(server, player);
     proxyController.run();
   }
