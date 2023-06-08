@@ -1,7 +1,7 @@
 package cs3500.pa04;
 
 import cs3500.pa04.controller.BattleSalvoController;
-import cs3500.pa04.controller.Reader;
+import cs3500.pa04.controller.input.Reader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Random;

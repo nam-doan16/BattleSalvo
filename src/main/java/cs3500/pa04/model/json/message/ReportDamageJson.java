@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * Represents a Json representation of the recordDamage method
+ * Represents a Json representation of the reportDamage method
  *
  * JSON format of this record:
  *
  * <p>
  *   <code>
  *     {
- *       "method-name": "method name"
+ *       "method-name": "report-damage"
  *       "arguments": {}
  *     }
  *   </code>
@@ -20,8 +20,8 @@ import com.fasterxml.jackson.databind.JsonNode;
  * @param methodName method name
  * @param arguments arguments of the method
  */
-public record RecordDamageJson(
+public record ReportDamageJson(
     @JsonProperty("method-name") String methodName,
     @JsonProperty("arguments") JsonNode arguments
-) implements JsonMessageFormat {
+) {
 }

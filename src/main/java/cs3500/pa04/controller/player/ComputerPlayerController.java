@@ -1,6 +1,6 @@
 package cs3500.pa04.controller.player;
 
-import cs3500.pa04.controller.ReaderInterface;
+import cs3500.pa04.controller.input.ReaderInterface;
 import cs3500.pa04.model.players.ComputerPlayer;
 import cs3500.pa04.model.types.Coord;
 import cs3500.pa04.model.types.ShipType;

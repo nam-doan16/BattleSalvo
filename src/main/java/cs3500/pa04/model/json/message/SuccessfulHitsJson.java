@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * <p>
  *   <code>
  *     {
- *       "method-name": "method name"
+ *       "method-name": "successful-hits"
  *       "arguments": {}
  *     }
  *   </code>
@@ -23,5 +23,5 @@ import com.fasterxml.jackson.databind.JsonNode;
 public record SuccessfulHitsJson(
     @JsonProperty("method-name") String methodName,
     @JsonProperty("arguments") JsonNode arguments
-) implements JsonMessageFormat {
+) {
 }
