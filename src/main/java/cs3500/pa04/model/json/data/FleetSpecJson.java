@@ -5,6 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Represents a fleet specification in a JSON message
  *
+ * <p>
+ *   <code>
+ *     {
+ *       "Carrier": 2
+ *       "Battleship": 1
+ *       "Destroyer": 1
+ *       "Submarine": 3
+ *     }
+ *   </code>
+ * </p>
+ *
  * @param carrier amount of carriers to be created
  * @param battleship amount of battleships to be created
  * @param destroyer amount of destroyers to be created
