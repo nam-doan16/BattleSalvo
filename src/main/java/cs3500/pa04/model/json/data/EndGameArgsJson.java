@@ -6,6 +6,15 @@ import cs3500.pa04.model.types.GameResult;
 /**
  * Represents an End-game argument in a JSON message
  *
+ * <p>
+ *   <code>
+ *     {
+ *       "result": WIN
+ *       "reason": "reason"
+ *     }
+ *   </code>
+ * </p>
+ *
  * @param result Either "WIN", "LOSE", or "DRAW"
  * @param reason A reasonable message for the result
  */
