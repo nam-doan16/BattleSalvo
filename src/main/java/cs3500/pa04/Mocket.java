@@ -1,4 +1,4 @@
-package cs3500.pa04.controller.mock;
+package cs3500.pa04;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
