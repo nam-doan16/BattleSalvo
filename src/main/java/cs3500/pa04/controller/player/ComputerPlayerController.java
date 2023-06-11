@@ -8,10 +8,8 @@ import cs3500.pa04.model.types.ShipType;
 import cs3500.pa04.view.View;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * Represents a Computer Player Controller
@@ -22,9 +20,6 @@ public class ComputerPlayerController extends AbstPlayerController {
   private final int height;
   private final int width;
   private int totalCoordinates;
-  private List<Coord> hits;
-  private int index;
-  private Set<Coord> alreadyFired;
 
   /**
    * Constructor for ComputerPlayerController
@@ -41,9 +36,6 @@ public class ComputerPlayerController extends AbstPlayerController {
     this.height = height;
     this.width = width;
     this.rand = rand;
-    this.hits = new ArrayList<>();
-    this.index = 0;
-    this.alreadyFired = new HashSet<>();
   }
 
   /**
@@ -103,74 +95,6 @@ public class ComputerPlayerController extends AbstPlayerController {
       shots.add(this.boardChoices.remove(rand.nextInt(this.boardChoices.size())));
       totalCoordinates--;
     }
-    player.setShots(shots);
-    return player.takeShots();
-  }
-
-  public List<Coord> getShots2(int maxShots) {
-    ArrayList<Coord> shots = new ArrayList<>();
-    boolean isVert = false;
-
-
-
-
-
-
-    if (!hits.isEmpty()) {
-// if there was only 1 hit so far then shoot at all the places around that hit
-      if (hits.size() == 1) {
-        for (int i = 0; i < maxShots; i++) {
-          for (int j = 0; j < this.boardChoices.size(); j++) {
-            if (!this.alreadyFired.contains(this.boardChoices.get(j))) {
-              if (hits.get(0).getX() - 1 == this.boardChoices.get(j).getX()) {
-                shots.add(this.boardChoices.get(j));
-              } else if (hits.get(0).getX() + 1 == this.boardChoices.get(j).getX()) {
-                shots.add(this.boardChoices.get(j));
-              } else if (hits.get(0).getY() - 1 == this.boardChoices.get(j).getY()) {
-                shots.add(this.boardChoices.get(j));
-              } else if (hits.get(0).getY() + 1 == this.boardChoices.get(j).getY()) {
-                shots.add(this.boardChoices.get(j));
-              }
-            }
-          }
-        }
-
-
-      } else { // if there's been more than 1 hit then continue shooting in that direction
-        if (this.hits.get(0).getX() - 1 == this.hits.get(1).getX()) {
-          for (int i = 0; i < maxShots; i++) {
-            for (int j = 0; j < this.boardChoices.size(); j++) {
-              if (!this.alreadyFired.contains(this.boardChoices.get(j))
-                  && this.hits.get(this.hits.size() - 1).getX() - j == this.boardChoices.get(j).getX()) {
-                shots.add(this.boardChoices.get(j));
-                this.alreadyFired.add(this.boardChoices.get(j));
-              }
-
-
-            }
-          }
-        } else if (this.hits.get(0).getX() + 1 == this.hits.get(1).getX()) {
-
-
-        } else if (hits.get(0).getY() - 1 == this.boardChoices.get(1).getY()) {
-
-
-        } else if (hits.get(0).getY() + 1 == this.boardChoices.get(1).getY()) {
-
-
-        }
-      }
-
-
-    } else {
-      for (int i = 0; i < maxShots; i++) {
-        shots.add(this.boardChoices.get(this.index));
-        this.alreadyFired.add(this.boardChoices.get(index));
-        this.index += 2;
-      }
-    }
-
-
     player.setShots(shots);
     return player.takeShots();
   }
