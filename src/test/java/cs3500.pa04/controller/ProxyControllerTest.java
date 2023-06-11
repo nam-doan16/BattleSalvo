@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import cs3500.pa04.controller.input.Reader;
-import cs3500.pa04.controller.mock.Mocket;
+import cs3500.pa04.Mocket;
 import cs3500.pa04.controller.player.AbstPlayerController;
 import cs3500.pa04.controller.player.ComputerPlayerController;
 import cs3500.pa04.model.JsonUtils;
@@ -118,6 +118,7 @@ public class ProxyControllerTest {
 
   /**
    * Converts the ByteArrayOutputStream log to a string in UTF_8 format
+   *
    * @return String representing the current log buffer
    */
   private String logToString() {

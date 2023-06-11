@@ -98,7 +98,7 @@ public class Board {
         temp.append(" ");
       }
       for (int j = 0; j < this.board[i].length; j++)  {
-        if (j >= 10 && this.board[i].length >= 10) {
+        if (j >= 10) {
           temp.append(" ");
         }
         temp.append(" ").append(this.board[i][j]);
@@ -107,9 +107,4 @@ public class Board {
 
     return temp.toString();
   }
-
-  public boolean containsShot(int x, int y) {
-    return board[y][x] != '0';
-  }
-
 }
