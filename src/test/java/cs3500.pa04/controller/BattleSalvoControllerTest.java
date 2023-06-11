@@ -28,19 +28,21 @@ class BattleSalvoControllerTest {
    */
   @Test
   void testWinRun() {
-    String shots = "0 1\n0 2\n0 3\n"
+    String shots = "0 1\n0 2\n0 3\n0 4\n"
         + "1 3\n1 4\n"
         + "2 1\n2 2\n2 3\n"
         + "5 0\n5 1\n5 2\n5 3\n5 4\n"
         + "8 1\n9 1\n10 1\n11 1\n"
         + "10 3\n11 3\n12 3\n13 3\n"
-        + "14 3\n12 1\n5 5\n2 4\n1 5\n0 4\n";
+        + "14 3\n12 1\n5 5\n2 4\n1 5\n"
+        + "10 5\n11 5\n12 5\n13 5\n14 5\n";
 
     Appendable output = new StringBuilder();
-    ReaderInterface input = new MockReader(initialStart + shots.repeat(100));
+    ReaderInterface input = new MockReader(initialStart + shots);
     BattleSalvoController controller = new BattleSalvoController(output, input, new Random(5));
     controller.run();
-    assertTrue(output.toString().contains("You Won!"));
+    System.out.println(output);
+    assertTrue(output.toString().contains("You win!"));
   }
 
   /**
@@ -60,7 +62,7 @@ class BattleSalvoControllerTest {
     ReaderInterface input = new MockReader(initialStart + shots);
     BattleSalvoController controller = new BattleSalvoController(output, input, new Random(7));
     controller.run();
-    assertTrue(output.toString().contains("You lost!"));
+    assertTrue(output.toString().contains("You lose!"));
   }
 
 
