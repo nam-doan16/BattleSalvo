@@ -6,6 +6,7 @@ import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.types.Coord;
 import cs3500.pa04.model.types.GameResult;
 import cs3500.pa04.model.types.ShipType;
+import cs3500.pa04.view.View;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ public abstract class AbstPlayer implements Player {
   private Board opponentBoard;
   private ArrayList<Coord> shots;
   private final Random rand;
+  private final View view;
 
   /**
    * Constructor for AbstPlayer
@@ -31,9 +33,10 @@ public abstract class AbstPlayer implements Player {
    * @param width width of player's board
    * @param rand random object
    */
-  public AbstPlayer(String name, int height, int width, Random rand) {
+  public AbstPlayer(String name, int height, int width, Random rand, View view) {
     this.name = name;
     this.rand = rand;
+    this.view = view;
     this.opponentBoard = new Board(height, width, new ArrayList<>());
   }
 
@@ -244,7 +247,16 @@ public abstract class AbstPlayer implements Player {
    */
   @Override
   public void endGame(GameResult result, String reason) {
+    StringBuilder gameResult = new StringBuilder();
+    if (GameResult.WIN == result) {
+      gameResult.append("You win! ");
+    } else if (GameResult.LOSE == result) {
+      gameResult.append("You lose! ");
+    } else {
+      gameResult.append("Draw! ");
+    }
 
+    view.printMessage(gameResult + reason);
   }
 
   /**
@@ -257,7 +269,4 @@ public abstract class AbstPlayer implements Player {
         + this.name() + "'s board:\n" + this.board;
   }
 
-  public boolean containsShot(int x, int y) {
-    return opponentBoard.containsShot(x, y);
-  }
 }

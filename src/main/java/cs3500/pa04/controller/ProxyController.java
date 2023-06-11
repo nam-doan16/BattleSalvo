@@ -52,7 +52,7 @@ public class ProxyController {
    * @param player an instance of a player
    * @throws IOException Thrown if the given server is unreachable
    */
-  public ProxyController(Socket server, AbstPlayerController player, Appendable userOutput) throws IOException {
+  public ProxyController(Socket server, AbstPlayerController player) throws IOException {
     this.server = server;
     this.player = player;
     this.in = server.getInputStream();
@@ -226,6 +226,8 @@ public class ProxyController {
    */
   private void handleEndGame(JsonNode arguments) {
     EndGameArgsJson endGameArgs = this.mapper.convertValue(arguments, EndGameArgsJson.class);
+
+    this.player.endGame(endGameArgs.result(), endGameArgs.reason());
 
     try {
       EndGameJson endGameResponse =

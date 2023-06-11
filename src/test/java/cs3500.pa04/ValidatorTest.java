@@ -3,6 +3,7 @@ package cs3500.pa04;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -88,6 +89,49 @@ class ValidatorTest {
 
     // testing null
     assertFalse(Validator.isInBound(null, 0, 0, 0));
+  }
+
+  /**
+   * Testing a successful usage of getSocket
+   */
+  @Test
+  public void testValidGetSocket() {
+    // testing with a hostname and port number
+    String[] args = {"0.0.0.0", "35001"};
+
+    int argsPort = Validator.getSocket(args);
+    assertEquals(argsPort, 35001);
+
+    // testing empty args
+    String[] emptyArgs = {};
+
+    Integer argsPortEmpty = Validator.getSocket(emptyArgs);
+    assertNull(argsPortEmpty);
+  }
+
+  /**
+   * Testing unsuccessful usages of getSocket
+   */
+  @Test
+  public void testInvalidGetSocket() {
+    // testing bad argument length
+    String[] shortLength = {"HELLO"};
+    String[] longLength = {"HELLO", "32523", "25556"};
+
+    Exception e = assertThrows(IllegalArgumentException.class,
+        () -> Validator.getSocket(shortLength), "Invalid amount of arguments!");
+    assertEquals(e.getMessage(), "Invalid amount of arguments!");
+
+    e = assertThrows(IllegalArgumentException.class,
+        () -> Validator.getSocket(longLength), "Invalid amount of arguments!");
+    assertEquals(e.getMessage(), "Invalid amount of arguments!");
+
+    // testing invalid port number
+    String[] invalidArgs = {"0.0.0.0", "35001a"};
+
+    e = assertThrows(IllegalArgumentException.class,
+        () -> Validator.getSocket(invalidArgs), "Invalid port number!");
+    assertEquals(e.getMessage(), "Invalid port number!");
 
   }
 }

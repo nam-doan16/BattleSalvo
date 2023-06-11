@@ -1,8 +1,5 @@
 package cs3500.pa04;
 
-import java.io.IOException;
-import java.net.Socket;
-
 /**
  * Represents a utility class Validator, responsible for validating parameters
  */
@@ -61,12 +58,13 @@ public class Validator {
 
   /**
    * Determines if the given arguments contains only a valid host name and a valid port number,
+   * if so, return the numeric representation of the port number
    * otherwise return null
    *
    * @param args array of arguments given by the user
-   * @return a socket to connect to or null for single-player
+   * @return numeric representation of the port or null
    */
-  public static Socket getSocket(String[] args) {
+  public static Integer getSocket(String[] args) {
     if (!(args.length == 0 || args.length == 2)) {
       throw new IllegalArgumentException("Invalid amount of arguments!");
     }
@@ -78,11 +76,7 @@ public class Validator {
       } catch (NumberFormatException e) {
         throw new IllegalArgumentException("Invalid port number!");
       }
-      try {
-        return new Socket(args[0], port);
-      } catch (IOException e) {
-        throw new IllegalArgumentException("Invalid host name!");
-      }
+      return port;
     }
     return null;
   }

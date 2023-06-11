@@ -32,23 +32,31 @@ public class Driver {
     Appendable output = new PrintStream(System.out);
     Reader reader = new Reader(new InputStreamReader(System.in));
 
-    Socket server = Validator.getSocket(args);
-    if (Objects.isNull(server)) {
+    Integer port = Validator.getSocket(args);
+    if (Objects.isNull(port)) {
       BattleSalvoController battleSalvo = new BattleSalvoController(output, reader, new Random());
       battleSalvo.run();
     } else {
-      runClient(server);
+      runClient(args[0], port);
     }
   }
 
+  /**
+   * Runs the Battle Salvo client on the given server
+   *
+   * @param host host name
+   * @param port host port number
+   *
+   * @throws IOException if the given server is unreachable
+   */
+  private static void runClient(String host, int port)
+      throws IOException {
+    Socket server = new Socket(host, port);
 
-  private static void runClient(Socket server)
-      throws IOException, IllegalStateException {
     AbstPlayerController player
         = new ComputerPlayerController(new Reader(new InputStreamReader(System.in)),
         6, 6, new View(System.out), new Random());
-    Appendable output = new PrintStream(System.out);
-    ProxyController proxyController = new ProxyController(server, player, output);
+    ProxyController proxyController = new ProxyController(server, player);
     proxyController.run();
   }
 }

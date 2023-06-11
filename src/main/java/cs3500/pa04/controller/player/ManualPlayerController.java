@@ -21,7 +21,7 @@ public class ManualPlayerController extends AbstPlayerController {
    */
   public ManualPlayerController(ReaderInterface input, View view,
                                 int height, int width, Random rand) {
-    super(new ManualPlayer("", height, width, rand), view, input, height, width);
+    super(new ManualPlayer("", height, width, rand, view), view, input, height, width);
   }
 
 
