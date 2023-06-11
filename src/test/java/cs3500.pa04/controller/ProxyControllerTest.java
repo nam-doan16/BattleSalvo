@@ -57,14 +57,21 @@ public class ProxyControllerTest {
         new ComputerPlayerController(reader, 10, 8, view, new Random(15));
 
     try {
-      this.controller = new ProxyController(socket, testPlayer, output);
+      this.controller = new ProxyController(socket, testPlayer);
     } catch (IOException e) {
       fail();
     }
 
     this.controller.run();
 
-    String expected = "{\"method-name\":\"setup\",\"arguments\":{\"fleet\":[{\"coord\":{\"x\":0,\"y\":2},\"length\":6,\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":7,\"y\":2},\"length\":6,\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":6,\"y\":1},\"length\":5,\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":2,\"y\":0},\"length\":4,\"direction\":\"HORIZONTAL\"},{\"coord\":{\"x\":1,\"y\":6},\"length\":4,\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":6,\"y\":6},\"length\":4,\"direction\":\"VERTICAL\"},{\"coord\":{\"x\":5,\"y\":5},\"length\":3,\"direction\":\"VERTICAL\"}]}}\n";
+    String expected = "{\"method-name\":\"setup\",\"arguments\":{\"fleet\":["
+        + "{\"coord\":{\"x\":0,\"y\":2},\"length\":6,\"direction\":\"VERTICAL\"},"
+        + "{\"coord\":{\"x\":7,\"y\":2},\"length\":6,\"direction\":\"VERTICAL\"},"
+        + "{\"coord\":{\"x\":6,\"y\":1},\"length\":5,\"direction\":\"VERTICAL\"},"
+        + "{\"coord\":{\"x\":2,\"y\":0},\"length\":4,\"direction\":\"HORIZONTAL\"},"
+        + "{\"coord\":{\"x\":1,\"y\":6},\"length\":4,\"direction\":\"VERTICAL\"},"
+        + "{\"coord\":{\"x\":6,\"y\":6},\"length\":4,\"direction\":\"VERTICAL\"},"
+        + "{\"coord\":{\"x\":5,\"y\":5},\"length\":3,\"direction\":\"VERTICAL\"}]}}\n";
     assertEquals("{\"method-name\":\"setup\"", logToString().substring(0, 22));
 
   }

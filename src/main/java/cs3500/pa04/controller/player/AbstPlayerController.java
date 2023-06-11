@@ -24,8 +24,7 @@ public abstract class AbstPlayerController {
   private final int height;
   private final int width;
   private final ReaderInterface reader;
-
-  private int totalCoordinates;
+  private final int totalCoordinates;
 
   /**
    * Constructor for AbstPlayerController
@@ -108,16 +107,10 @@ public abstract class AbstPlayerController {
           break;
         }
         if (Validator.isInBound(shotCoord, height, width, 0)) {
-          if (!this.player.containsShot(shotCoord[0], shotCoord[1])) {
-            shots.add(new Coord(shotCoord[0], shotCoord[1]));
-            totalCoordinates--;
-          } else {
-            view.printMessage("Shot already made!");
-          }
+          shots.add(new Coord(shotCoord[0], shotCoord[1]));
         } else {
           view.printMessage("Invalid numerical bounds! Enter your Salvo again.");
         }
-
       }
     } while (shots.size() != maxShots);
 
