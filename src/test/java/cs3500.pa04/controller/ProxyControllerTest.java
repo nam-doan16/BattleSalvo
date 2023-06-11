@@ -57,7 +57,7 @@ public class ProxyControllerTest {
         new ComputerPlayerController(reader, 10, 8, view, new Random(15));
 
     try {
-      this.controller = new ProxyController(socket, testPlayer);
+      this.controller = new ProxyController(socket, testPlayer, output);
     } catch (IOException e) {
       fail();
     }
@@ -71,6 +71,7 @@ public class ProxyControllerTest {
 
   /**
    * Converts the ByteArrayOutputStream log to a string in UTF_8 format
+   *
    * @return String representing the current log buffer
    */
   private String logToString() {
