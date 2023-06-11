@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Represents a fleet specification in a JSON message
- *
+ * JSON format of this record:
  * <p>
  *   <code>
  *     {

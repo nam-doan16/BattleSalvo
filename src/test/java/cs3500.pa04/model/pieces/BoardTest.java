@@ -2,6 +2,7 @@ package cs3500.pa04.model.pieces;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cs3500.pa04.model.types.Coord;
 import cs3500.pa04.model.types.ShipType;
@@ -84,5 +85,13 @@ class BoardTest {
             2   0 0 0 0 0 0 0 0 0 0  0
             3   0 0 0 0 0 0 0 0 0 0  0
             4   0 0 0 0 0 0 0 0 0 0  0""");
+  }
+
+  /**
+   * Testing containsShot
+   */
+  @Test
+  public void testContainsShot() {
+    assertTrue(this.board.containsShot(0,0));
   }
 }

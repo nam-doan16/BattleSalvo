@@ -23,7 +23,7 @@ public class TestDriver {
     AbstPlayerController player
         = new ComputerPlayerController(new Reader(new InputStreamReader(System.in)),
         6, 6, new View(System.out), new Random());
-    ProxyController proxyController = new ProxyController(server, player);
+    ProxyController proxyController = new ProxyController(server, player, new StringBuilder());
     proxyController.run();
   }
 }

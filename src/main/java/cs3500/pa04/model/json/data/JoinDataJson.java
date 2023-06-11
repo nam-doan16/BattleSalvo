@@ -5,7 +5,7 @@ import cs3500.pa04.model.types.GameMode;
 
 /**
  * Represents the data sent through the join method as a JSON
- *
+ * JSON format of this record:
  * <p>
  *   <code>
  *     {
