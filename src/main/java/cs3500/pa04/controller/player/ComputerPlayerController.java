@@ -19,7 +19,7 @@ public class ComputerPlayerController extends AbstPlayerController {
   private final Random rand;
   private final int height;
   private final int width;
-  private int totalCoordinates;
+  private int totalCoordinates; // represents the total REMAINING coordinates
 
   /**
    * Constructor for ComputerPlayerController
