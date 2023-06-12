@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import cs3500.pa04.controller.input.Reader;
 import cs3500.pa04.Mocket;
+import cs3500.pa04.controller.input.Reader;
 import cs3500.pa04.controller.player.AbstPlayerController;
 import cs3500.pa04.controller.player.ComputerPlayerController;
 import cs3500.pa04.model.JsonUtils;
@@ -57,6 +57,12 @@ public class ProxyControllerTest {
    */
   @Test
   public void testSetupMethod() {
+    // for takeShots
+    CoordJson[] listCoords = new CoordJson[3];
+    listCoords[0] = new CoordJson(0, 0);
+    listCoords[1] = new CoordJson(1, 0);
+    listCoords[2] = new CoordJson(2, 2);
+
     // for setup
     FleetSpecJson fleetSpecs = new FleetSpecJson(2, 1, 3, 1);
     SetupArgumentsJson setupArgs = new SetupArgumentsJson(8, 10, fleetSpecs);
@@ -65,12 +71,6 @@ public class ProxyControllerTest {
     // for join
     JoinDataJson joinData = new JoinDataJson("Nam", GameMode.SINGLE);
     JsonNode joinNode = createJoin(joinData);
-
-    // for takeShots
-    CoordJson[] listCoords = new CoordJson[3];
-    listCoords[0] = new CoordJson(0, 0);
-    listCoords[1] = new CoordJson(1, 0);
-    listCoords[2] = new CoordJson(2, 2);
 
     VolleyJson volley = new VolleyJson(listCoords);
     JsonNode takeShotsNode = createTakeShots(volley);
