@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class JsonUtils {
 
+  private JsonUtils() {}
+
   /**
    * Converts a given record object to a JsonNode
    *

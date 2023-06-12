@@ -7,6 +7,7 @@ import cs3500.pa04.controller.player.ComputerPlayerController;
 import cs3500.pa04.controller.player.ManualPlayerController;
 import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.types.Coord;
+import cs3500.pa04.model.types.GameResult;
 import cs3500.pa04.view.View;
 import java.util.List;
 import java.util.Random;
@@ -55,11 +56,11 @@ public class BattleSalvoController {
       opponent.successfulHits(player.reportDamage(opponentShots));
     } while (playerShips.size() != 0 && opponentShips.size() != 0);
     if (playerShips.size() == 0 && opponentShips.size() == 0) {
-      view.printMessage("Draw!");
+      player.endGame(GameResult.DRAW, "Both players' ships were sunk!");
     } else if (playerShips.size() == 0) {
-      view.printMessage("You lost!");
+      player.endGame(GameResult.LOSE, "The opponent sunk all your ships!");
     } else {
-      view.printMessage("You Won!");
+      player.endGame(GameResult.WIN, "You sunk all the opponents ships!");
     }
   }
 

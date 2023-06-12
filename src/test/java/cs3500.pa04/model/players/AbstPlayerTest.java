@@ -9,6 +9,7 @@ import cs3500.pa04.model.pieces.Ship;
 import cs3500.pa04.model.types.Coord;
 import cs3500.pa04.model.types.GameResult;
 import cs3500.pa04.model.types.ShipType;
+import cs3500.pa04.view.View;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,7 +29,9 @@ class AbstPlayerTest {
    */
   @BeforeEach
   public void setUp() {
-    this.player = new ManualPlayer("Nam Doan", 6, 6, new Random(6));
+    Appendable appendable = new StringBuilder();
+    this.player = new ManualPlayer("Nam Doan", 6, 6, new Random(6),
+        new View(appendable));
     HashMap<ShipType, Integer> specs = new HashMap<>();
     specs.put(ShipType.CARRIER, 1);
     specs.put(ShipType.BATTLESHIP, 2);
@@ -71,7 +74,8 @@ class AbstPlayerTest {
     specs.put(ShipType.BATTLESHIP, 1);
     specs.put(ShipType.DESTROYER, 1);
     specs.put(ShipType.SUBMARINE, 1);
-    AbstPlayer tempPlayer = new ManualPlayer("Test", 6, 6, new Random(6));
+    AbstPlayer tempPlayer = new ManualPlayer("Test", 6, 6, new Random(6),
+        new View(new StringBuilder()));
     List<Ship> ships = tempPlayer.setup(6, 6, specs);
     assertEquals(ships.size(), 5);
   }

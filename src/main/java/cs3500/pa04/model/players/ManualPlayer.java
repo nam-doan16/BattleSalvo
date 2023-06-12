@@ -1,5 +1,6 @@
 package cs3500.pa04.model.players;
 
+import cs3500.pa04.view.View;
 import java.util.Random;
 
 /**
@@ -15,7 +16,7 @@ public class ManualPlayer extends AbstPlayer {
    * @param width width of board
    * @param rand Random object
    */
-  public ManualPlayer(String name, int height, int width, Random rand) {
-    super(name, height, width, rand);
+  public ManualPlayer(String name, int height, int width, Random rand, View view) {
+    super(name, height, width, rand, view);
   }
 }

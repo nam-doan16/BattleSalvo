@@ -1,5 +1,6 @@
 package cs3500.pa04.model.players;
 
+import cs3500.pa04.view.View;
 import java.util.Random;
 
 /**
@@ -14,7 +15,7 @@ public class ComputerPlayer extends AbstPlayer {
    * @param width width of board
    * @param rand Random object
    */
-  public ComputerPlayer(int height, int width, Random rand) {
-    super("nam-doan16", height, width, rand);
+  public ComputerPlayer(int height, int width, Random rand, View view) {
+    super("nam-doan16", height, width, rand, view);
   }
 }

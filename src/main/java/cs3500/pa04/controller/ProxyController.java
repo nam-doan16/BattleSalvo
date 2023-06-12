@@ -215,7 +215,7 @@ public class ProxyController {
     // update this player's opponent board representation
     this.player.successfulHits(coords);
     SuccessfulHitsJson successfulHitsResponse =
-        new SuccessfulHitsJson("successful-hits", null);
+        new SuccessfulHitsJson("successful-hits", mapper.createObjectNode());
     this.out.println(JsonUtils.serializeRecord(successfulHitsResponse));
   }
 
@@ -227,8 +227,11 @@ public class ProxyController {
   private void handleEndGame(JsonNode arguments) {
     EndGameArgsJson endGameArgs = this.mapper.convertValue(arguments, EndGameArgsJson.class);
 
+    this.player.endGame(endGameArgs.result(), endGameArgs.reason());
+
     try {
-      EndGameJson endGameResponse = new EndGameJson("end-game", null);
+      EndGameJson endGameResponse =
+          new EndGameJson("end-game", mapper.createObjectNode());
       this.out.println(JsonUtils.serializeRecord(endGameResponse));
       this.server.close();
     } catch (IOException e) {

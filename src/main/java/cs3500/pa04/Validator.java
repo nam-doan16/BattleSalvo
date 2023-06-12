@@ -55,4 +55,29 @@ public class Validator {
     }
     return true;
   }
+
+  /**
+   * Determines if the given arguments contains only a valid host name and a valid port number,
+   * if so, return the numeric representation of the port number
+   * otherwise return null
+   *
+   * @param args array of arguments given by the user
+   * @return numeric representation of the port or null
+   */
+  public static Integer getSocket(String[] args) {
+    if (!(args.length == 0 || args.length == 2)) {
+      throw new IllegalArgumentException("Invalid amount of arguments!");
+    }
+    // 0 args = singleplayer, 2 args = multiplayer
+    if (args.length == 2) {
+      int port;
+      try {
+        port = Integer.parseInt(args[1]);
+      } catch (NumberFormatException e) {
+        throw new IllegalArgumentException("Invalid port number!");
+      }
+      return port;
+    }
+    return null;
+  }
 }

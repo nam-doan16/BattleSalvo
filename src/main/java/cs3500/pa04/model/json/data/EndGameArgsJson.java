@@ -5,7 +5,7 @@ import cs3500.pa04.model.types.GameResult;
 
 /**
  * Represents an End-game argument in a JSON message
- *
+ * JSON format of this record:
  * <p>
  *   <code>
  *     {

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Represents a setup argument that was sent by the server
- *
+ * JSON format of this record:
  * <p>
  *   <code>
  *     {

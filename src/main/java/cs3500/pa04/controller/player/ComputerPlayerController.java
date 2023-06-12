@@ -32,7 +32,7 @@ public class ComputerPlayerController extends AbstPlayerController {
    */
   public ComputerPlayerController(ReaderInterface input, int height,
                                   int width, View view, Random rand) {
-    super(new ComputerPlayer(height, width, rand), view, input, height, width);
+    super(new ComputerPlayer(height, width, rand, view), view, input, height, width);
     this.height = height;
     this.width = width;
     this.rand = rand;
@@ -98,7 +98,6 @@ public class ComputerPlayerController extends AbstPlayerController {
     player.setShots(shots);
     return player.takeShots();
   }
-
 
   /**
    * Gets the name of this computer player
